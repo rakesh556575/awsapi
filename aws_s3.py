@@ -16,10 +16,10 @@ class S3():
         """
         region = kwargs.get('region_name', 'us-east-2')
         self.bucket_name = kwargs.get('bucket_name', self.bucket_name)
-        self.s3client=client(
+        self.s3client = client(
                                   's3',
-                                  aws_access_key_id=kwargs.get("ACCESS_KEY","AKIAI7E3GPDFSQLWDPJA"),
-                                  aws_secret_access_key=kwargs.get("SECRET_KEY","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"),
+                                  aws_access_key_id=kwargs.get("ACCESS_KEY","AKIAIKGNZUZEWBCVTXGA"),
+                                  aws_secret_access_key=kwargs.get("SECRET_KEY","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"),
 
                           )
 
@@ -30,9 +30,13 @@ class S3():
         """
 
 
+        while True:
+            bucketName = self.randomNameGen()
+            if self.bucket_exist(bucketName) is False:
+                break
 
-        bucketName=self.randomNameGen()
         try:
+            
             self.s3client.create_bucket(Bucket=bucketName)
 
         except BaseException as e:
@@ -57,7 +61,7 @@ class S3():
         :param bucketname:
         :return: True or False if bucket exists
         """
-        response=self.s3client.list_buckets()
+        response = self.s3client.list_buckets()
         buckets = [bucket['Name'] for bucket in response['Buckets']]
 
         return bucketname in buckets
