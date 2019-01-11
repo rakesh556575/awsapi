@@ -1,7 +1,7 @@
 from awsapi.awsapi.aws_s3 import S3
 
 
-print("test1")
+print("test2")
 
 
 t1=S3(region_name="us-east-2",ACCESS_KEY="AKIAIKGNZUZEWBCVTXGA",SECRET_KEY="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")
