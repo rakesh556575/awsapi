@@ -1,6 +1,9 @@
 from awsapi.awsapi.aws_s3 import S3
 
 
+print("test")
+
+
 t1=S3(region_name="us-east-2",ACCESS_KEY="AKIAIKGNZUZEWBCVTXGA",SECRET_KEY="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")
 
 bucket_name=t1.create_bucket()
